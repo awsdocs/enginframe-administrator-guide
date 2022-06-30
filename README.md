@@ -1,15 +1,6 @@
-## My Project
+## Enginframe Administrator Guide
 
-TODO: Fill this README out!
-
-Be sure to:
-
-* Change the title in this README
-* Edit your repository description on GitHub
-
-## Security
-
-See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more information.
+The open source version of the [EnginFrame Administrator Guide](doc_source/index.md).
 
 ## License Summary
 
