@@ -78,6 +78,8 @@ EnginFrame agent Log4j2 logging is configured in `${EF_TOP}/<VERSION>/enginframe
 
 Log4j2 log configuration files apply to any EnginFrame internal dependency that uses Log4j2 logging, such as MyBatis or Quartz\.
 
+If you need to modify the defaults, you can specify a new configuration in the `log4j2.server.xml` and `log4j2.agent.xml` files under the configuration directory `$EF_TOP/conf/enginframe`\.
+
 ### Change log file locations<a name="section-logging-server-agent-file-location"></a>
 
 The EnginFrame logging system gives you complete flexibility on where to store log files\. For example you may want to move log files from their default location to store them on a high speed file\-system or to conform to your company's policies\. 

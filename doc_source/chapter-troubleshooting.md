@@ -7,6 +7,7 @@
 **Topics**
 + [Breaking change in AJP Connector configuration from EnginFrame 2019\.0\-1424](#breaking-change-ajp-connector-configuration)
 + [Interactive service imports using Slurm before and after EnginFrame version 2020\.1\-r413](#interactive-services-slurm)
++ [Updating to EnginFrame version 2021\.0\-r1646 or later](#hazelcast)
 
 ### Breaking change in AJP Connector configuration from EnginFrame 2019\.0\-1424<a name="breaking-change-ajp-connector-configuration"></a>
 
@@ -27,3 +28,13 @@ Resolve the issue in the *$\{EF\_CONF\_ROOT\}/tomcat/conf/server\.xml* file, in 
 After the release of EnginFrame version 2020\.1\-r413, you can no longer import interactive services using Slurm as a grid manager with EnginFrame versions that are earlier than 2020\.1\-r413\. To resolve this issue, you must create a new interactive service instead of importing one using Slurm\.
 
 In addition, after 2020\.1\-r413, the default interactive services "Linux Desktop" and "Windows desktop" don't work as\-is when using Slurm as a scheduler\. To make them work, open them in edit mode at least one time\.
+
+### Updating to EnginFrame version 2021\.0\-r1646 or later<a name="hazelcast"></a>
+
+Because Hazelcast is updated by 2 major versions with EnginFrame version 2021\.0\-r1646, you must take additional steps before you update EnginFrame to this and later versions\.
+
+If you have an EnginFrame Enterprise setup, you must first stop the EnginFrame service in all of the instances to perform a successful update to EnginFrame versions 2021\.0\-r1646 or later\.
+
+Moreover, if you have a custom `hazelcast.xml` configuration \(modified from the default configuration\), you must do the following before updating to EnginFrame versions 2021\.0\-r1646 or later:
++ Port the custom `hazelcast.xml` to the format used by Hazelcast 5 following the [relevant Hazelcast documentation](https://docs.hazelcast.com/hazelcast/5.0/migrate/upgrading-from-imdg-3)\.
++ Copy it over to the `$EF_ROOT/conf folder`, overwriting the default `hazelcast.xml` file\.

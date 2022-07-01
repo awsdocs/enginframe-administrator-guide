@@ -57,7 +57,13 @@ In addition to the standard packages that are installed with your operating syst
 
 #### Java™ platform<a name="java-platform"></a>
 
-NICE EnginFrame requires the *Linux® x64* version of *Oracle® Java™ Platform Standard Edition* \(Java™ SE 8\) or *OpenJDK Runtime Environment 8*\.
+NICE EnginFrame requires the *Linux® x64* version of *Oracle® Java™ Platform Standard Edition* \(Java™ SE\) or the *OpenJDK Runtime Environment *\. EnginFrame supports both versions 8 and 11 of these packages\.
+
+**Supported Java™ vendors:**
++ Oracle®
++ Amazon Web Services
++ Red Hat®
++ IcedTea
 
 In this topic, `JAVA_HOME` is referred to as the Java™ installation directory\.
 

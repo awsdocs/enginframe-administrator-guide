@@ -97,7 +97,7 @@ A plugin directory structure example is:
 
 <a name="image-plugin-tree"></a>EnginFrame Plugin Structure
 
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/enginframe/latest/ag/images/admin-guide/ef-plugin-tree.png)
+![\[Shows a graphical representation of the directory structure of EF_ROOT.\]](http://docs.aws.amazon.com/enginframe/latest/ag/images/ef-plugin-tree.png)
 
 Some plugins may need additional setup operations to work properly\. Read and follow the instructions distributed with plugin documentation\.
 
