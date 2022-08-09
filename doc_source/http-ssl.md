@@ -10,7 +10,7 @@ If you choose the HTTPS option, the installer automatically creates self\-signed
 
 ## Using signed certificates with EnginFrame<a name="tomcat-https-certificate"></a>
 
-If self\-signed certificates aren't suitable for your needs or you already have valid certificates setup for an HTTPS web server, we recommend that you refer to the [Apache Tomcat® official documentation](http://tomcat.apache.org/tomcat-7.0-doc/ssl-howto.html) when configuring your web server to use your certificates\. 
+If self\-signed certificates aren't suitable for your needs or you already have valid certificates setup for an HTTPS web server, we recommend that you refer to the [Apache Tomcat® official documentation](https://tomcat.apache.org/tomcat-9.0-doc/ssl-howto.html) when configuring your web server to use your certificates\. 
 
 Apache Tomcat® provides different setup procedures depending on the specific format of the available certificate\. 
 

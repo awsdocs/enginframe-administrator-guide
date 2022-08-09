@@ -8,6 +8,7 @@
 + [Breaking change in AJP Connector configuration from EnginFrame 2019\.0\-1424](#breaking-change-ajp-connector-configuration)
 + [Interactive service imports using Slurm before and after EnginFrame version 2020\.1\-r413](#interactive-services-slurm)
 + [Updating to EnginFrame version 2021\.0\-r1646 or later](#hazelcast)
++ [Updating to EnginFrame version 2021\.0\-r1653 or later](#tomcat)
 
 ### Breaking change in AJP Connector configuration from EnginFrame 2019\.0\-1424<a name="breaking-change-ajp-connector-configuration"></a>
 
@@ -38,3 +39,27 @@ If you have an EnginFrame Enterprise setup, you must first stop the EnginFrame s
 Moreover, if you have a custom `hazelcast.xml` configuration \(modified from the default configuration\), you must do the following before updating to EnginFrame versions 2021\.0\-r1646 or later:
 + Port the custom `hazelcast.xml` to the format used by Hazelcast 5 following the [relevant Hazelcast documentation](https://docs.hazelcast.com/hazelcast/5.0/migrate/upgrading-from-imdg-3)\.
 + Copy it over to the `$EF_ROOT/conf folder`, overwriting the default `hazelcast.xml` file\.
+
+### Updating to EnginFrame version 2021\.0\-r1653 or later<a name="tomcat"></a>
+
+When performing an update to this version from a previous installation of EnginFrame, you must make sure that the `server.xml` file in the `tomcat` folder `/opt/nice/enginframe/conf/tomcat/conf/server.xml` has this line removed since it breaks Tomcat 9:
+
+```
+<Listener className="org.apache.catalina.core.JasperListener"/>
+```
+
+If Tomcat is configured to use HTTPS, make sure you remove the `protocol` parameter from the `Connector` section in the `server.xml` config file:
+
+```
+<Connector port="{$httpsd_port}" protocol="org.apache.coyote.http11.Http11Protocol"
+           maxThreads="150" SSLEnabled="true" scheme="https" secure="true"
+           clientAuth="true" sslProtocol="TLS"
+```
+
+should be:
+
+```
+<Connector port="{$httpsd_port}"
+           maxThreads="150" SSLEnabled="true" scheme="https" secure="true"
+           clientAuth="true" sslProtocol="TLS"
+```

@@ -11,6 +11,9 @@ Based on the latest and most advanced Web 2\.0 standards, it provides a flexible
 **Note**  
 Starting March 31, 2022, NICE EnginFrame doesn't support VNC®, HP® RGS, VirtualGL, and NICE DCV 2016 and previous versions\.
 
+**Note**  
+Starting August 5, 2022, NICE EnginFrame is bundled with an embedded version of Tomcat® that doesn't provide any sample webapps\. According to [CVE\-2022\-34305](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-34305), the sample webapps are affected by a vulnerability\. Without the sample webapps, EnginFrame isn't affected by the CVE\-2022\-34305 vulnerability\.
+
 ## Architectural overview<a name="architecture"></a>
 
 EnginFrame has an architecture layered into three tiers, as shown in [EnginFrame architecture](#image-ef-architecture): 
@@ -38,7 +41,7 @@ EnginFrame abstracts computing resources and data management \(*Resource Tier*\)
 The internal structure of EnginFrame reflects this high\-level architecture and revolves around two main software components: the EnginFrame Server and the EnginFrame Agent\. 
 
 The EnginFrame Server  
-The EnginFrame Server is a Java™ web application\. It must be deployed inside a Java Servlet container\. It exposes services to users\. EnginFrame ships with [Apache Tomcat® 7\.0\.105](http://tomcat.apache.org/)\.
+The EnginFrame Server is a Java™ web application\. It must be deployed inside a Java Servlet container\. It exposes services to users\. EnginFrame ships with [Apache Tomcat® 9\.0\.64](http://tomcat.apache.org/)\.
 
 The EnginFrame Agent  
 The EnginFrame Agent is a stand\-alone Java™ application that manages the computing resources and run services on user's behalf when running as `root`\. 

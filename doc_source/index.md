@@ -38,4 +38,4 @@ Amazon's trademarks and trade dress may not be used in
    + [Authentication framework](chapter-authentication.md)
    + [Authorization system](chapter-authorization.md)
    + [Configuring HTTPS](http-ssl.md)
-+ [Document history](document_history.md)
++ [Document history](document_history_md.md)

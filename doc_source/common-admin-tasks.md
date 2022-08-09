@@ -359,7 +359,7 @@ Changes to session timeout require EnginFrame Server's restart\.
 
 ## Apache®\-Tomcat® connection<a name="apache-tomcat"></a>
 
-There are many reasons to integrate Tomcat® with Apache®\. And there are reasons why it should not be done too\. Starting with newer Tomcat \(EnginFrame ships version 7\.0\.105\), performance reasons are harder to justify\. So here are the issues to discuss in integrating vs not:
+There are many reasons to integrate Tomcat® with Apache®\. And there are reasons why it should not be done too\. Starting with newer Tomcat \(EnginFrame ships version 9\.0\.64\), performance reasons are harder to justify\. So here are the issues to discuss in integrating vs not:
 + *Encryption* \- The Apache HTTP Server module mod\_ssl is an interface to the OpenSSL library, which provides Strong Encryption using the Secure Sockets Layer and Transport Layer Security protocols\. Tomcat is able to provide a similar encryption using the JVM, which needs to be cross platform, so it is somehow less efficient than Apache\. Moreover, Apache has a longer experience on this field\.
 + *Clustering* \- By using Apache as a front end you can let Apache act as a front door to your content to multiple Tomcat instances\. If one of your Tomcats fails, Apache ignores it and your Sysadmin can sleep through the night\. This point could be ignored if you use a hardware load balancer and the clustering capabilities of EnginFrame Enterprise Edition\.
 + *Clustering/Security* \- You can also use Apache as a front door to different Tomcats for different URL namespaces \(/app1/, /app2/, /app3/, or virtual hosts\)\. The Tomcats can then be each in a protected area and from a security point of view, you only need to worry about the Apache server\. Essentially, Apache becomes a smart proxy server\.
@@ -369,7 +369,7 @@ There are many reasons to integrate Tomcat® with Apache®\. And there are reaso
 + *Speed* \- Apache is faster at serving static content than Tomcat\. But unless you have a high traffic site, this point is useless\. But in some scenarios, Tomcat can be faster than Apache\. So benchmark *your* site\.
 + *Socket handling/system stability* \- Apache has better socket handling with respect to error conditions than Tomcat\. The main reason is that Tomcat must perform all its socket handling via the JVM which needs to be cross platform\. The problem is that socket optimization is a platform specific ordeal\. Most of the time the Java™ code is fine, but when you are also bombarded with dropped connections, invalid packets, invalid requests from invalid IPs, Apache does a better job at dropping these error conditions than JVM based program\. \(YMMV\)
 
-\[Source: [Tomcat Wiki](http://wiki.apache.org/tomcat/FAQ/Connectors#Q3)\]\.
+\[Source: [Tomcat Wiki](https://cwiki.apache.org/confluence/display/TOMCAT/Connectors#Connectors-Q3)\]\.
 
 There are at least two ways to configure an Apache Web Server as a frontend to Tomcat according to the protocol used:
 + [HTTP](http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol)

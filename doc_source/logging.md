@@ -20,7 +20,7 @@ These are the most interesting log files:
 
   Contains Tomcat®'s error logs about EnginFrame Portal not caught by EnginFrame itself\. 
 
-The standard Tomcat® configuration fits the most common installations\. In case of specific needs you can modify the default `$EF_TOP/<VERSION>/enginframe/conf/logging.properties` configuration\. Refer to the official [Tomcat® documentation](http://tomcat.apache.org/tomcat-7.0-doc/logging.html) fore more details\. 
+The standard Tomcat® configuration fits the most common installations\. In case of specific needs you can modify the default `$EF_TOP/<VERSION>/enginframe/conf/logging.properties` configuration\. Refer to the official [Tomcat® documentation](https://tomcat.apache.org/tomcat-9.0-doc/logging.html) fore more details\. 
 
 ## EnginFrame server and agent logging<a name="section-logging-server-agent"></a>
 
