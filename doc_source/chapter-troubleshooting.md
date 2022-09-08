@@ -9,6 +9,7 @@
 + [Interactive service imports using Slurm before and after EnginFrame version 2020\.1\-r413](#interactive-services-slurm)
 + [Updating to EnginFrame version 2021\.0\-r1646 or later](#hazelcast)
 + [Updating to EnginFrame version 2021\.0\-r1653 or later](#tomcat)
++ [Updating Log4j library in EnginFrame](#log4j-update)
 
 ### Breaking change in AJP Connector configuration from EnginFrame 2019\.0\-1424<a name="breaking-change-ajp-connector-configuration"></a>
 
@@ -52,14 +53,76 @@ If Tomcat is configured to use HTTPS, make sure you remove the `protocol` parame
 
 ```
 <Connector port="{$httpsd_port}" protocol="org.apache.coyote.http11.Http11Protocol"
-           maxThreads="150" SSLEnabled="true" scheme="https" secure="true"
-           clientAuth="true" sslProtocol="TLS"
+maxThreads="150" SSLEnabled="true" scheme="https" secure="true"
+clientAuth="true" sslProtocol="TLS"
 ```
 
 should be:
 
 ```
 <Connector port="{$httpsd_port}"
-           maxThreads="150" SSLEnabled="true" scheme="https" secure="true"
-           clientAuth="true" sslProtocol="TLS"
+maxThreads="150" SSLEnabled="true" scheme="https" secure="true"
+clientAuth="true" sslProtocol="TLS"
 ```
+
+### Updating Log4j library in EnginFrame<a name="log4j-update"></a>
+
+Due to an issue in the Apache Log4j library \(CVE: [https://www\.randori\.com/blog/cve\-2021\-44228](https://www.randori.com/blog/cve-2021-44228)\) included in EnginFrame from version 2019\.0\-r1424 to 2021\.0\-r1307, NICE recommends that you upgrade to the latest EnginFrame version available on [https://download\.enginframe\.com](https://download.enginframe.com) or update the Log4j library in your EnginFrame installation as described in the following instructions:
+
+1. Identify the `EF_TOP` and `EF_ROOT` folder of your EnginFrame installation\. For more information, see [Installation directories](planning-deployment.md#installation-paths)\.
+
+1. Identify the log4j files:
+
+   ```
+   $ find "$EF_TOP" -name log4j*.jar
+   <EF_ROOT>/agent/log4j-core-<OLD_VERSION>.jar
+   <EF_ROOT>/agent/log4j-api-<OLD_VERSION>.jar
+   <EF_ROOT>/agent/log4j-1.2-api-<OLD_VERSION>.jar
+   <EF_ROOT>/WEBAPP/WEB-INF/lib/log4j-core-<OLD_VERSION>.jar
+   <EF_ROOT>/WEBAPP/WEB-INF/lib/log4j-api-<OLD_VERSION>.jar
+   <EF_ROOT>/WEBAPP/WEB-INF/lib/log4j-1.2-api-<OLD_VERSION>.jar
+   ```
+
+   Items highlighted in *red* represent your values\.
+
+1. Stop EnginFrame\. For more information, see [Running NICE EnginFrame](running.md):
+
+   ```
+   $  EF_TOP/bin/enginframe stop
+   ```
+
+1. Backup the old log4j files to a backup directory of your choice:
+
+   ```
+   $ EF_ROOT=...
+   BACKUP_AGENT_DIR=/tmp/backup/agent
+   BACKUP_SERVER_DIR=/tmp/backup/server
+   mkdir -p $BACKUP_AGENT_DIR
+   mkdir -p $BACKUP_SERVER_DIR
+   mv $EF_ROOT/agent/log4j-core-<OLD_VERSION>.jar $BACKUP_AGENT_DIR
+   mv $EF_ROOT/agent/log4j-api-<OLD_VERSION>.jar $BACKUP_AGENT_DIR
+   mv $EF_ROOT/agent/log4j-1.2-api-<OLD_VERSION>.jar $BACKUP_AGENT_DIR
+   mv $EF_ROOT/WEBAPP/WEB-INF/lib/log4j-core-<OLD_VERSION>.jar $BACKUP_SERVER_DIR
+   mv $EF_ROOT/WEBAPP/WEB-INF/lib/log4j-api-<OLD_VERSION>.jar $BACKUP_SERVER_DIR
+   mv $EF_ROOT/WEBAPP/WEB-INF/lib/log4j-1.2-api-<OLD_VERSION>.jar $BACKUP_SERVER_DIR
+   ```
+
+1. Download and expand the Log4j `tar.gz` you want to update to from [https://logging\.apache\.org/log4j/2\.x/download\.html](https://logging.apache.org/log4j/2.x/download.html)\. It's essential that you verify the integrity of the downloaded files using the PGP and SHA512 signatures, as suggested by the download page of Apache Log4j\.
+
+1. Copy the following jar files from the downloaded package to the EnginFrame folder:
+
+   ```
+   $ DOWNLOADED=apache-log4j-<NEW_VERSION>.0-bin
+   cp $DOWNLOADED/log4j-core-<NEW_VERSION>.jar $EF_ROOT/agent/
+   cp $DOWNLOADED/log4j-api-<NEW_VERSION>.jar $EF_ROOT/agent/
+   cp $DOWNLOADED/log4j-1.2-api-<NEW_VERSION>.jar $EF_ROOT/agent/
+   cp $DOWNLOADED/log4j-core-<NEW_VERSION>.jar $EF_ROOT/WEBAPP/WEB-INF/lib/
+   cp $DOWNLOADED/log4j-api-<NEW_VERSION>.jar $EF_ROOT/WEBAPP/WEB-INF/lib/
+   cp $DOWNLOADED/log4j-1.2-api-<NEW_VERSION>.jar $EF_ROOT/WEBAPP/WEB-INF/lib/
+   ```
+
+1. Start EnginFrame\. For more information, see [Running NICE EnginFrame](running.md):
+
+   ```
+   $ EF_TOP/bin/enginframe start
+   ```

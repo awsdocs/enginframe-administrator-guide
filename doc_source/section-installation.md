@@ -494,3 +494,48 @@ Before deleting these entries, make a note of the value that they are set to\. Y
    Set *name *and *password* to the values that `ef.db.admin.name` and `ef.db.admin.password` were set to in the `${EF_CONF_ROOT}/enginframe/server.conf` file in Step 1\.
 
 1. Restart EnginFrame\. For more information, see [Running NICE EnginFrame](running.md)\.
+
+## Configure EnginFrame to work behind a network proxy<a name="network-proxy-configuration"></a>
+
+Learn how to provide the proxy information EnginFrame needs to route network calls correctly\.
+
+You'll use two java properties:
+
+```
+-Dhttp.proxyHost=PROXY HOST
+-Dhttp.proxyPort=PROXY PORT
+```
+
+If the proxy is configured to work with HTTPS, use:
+
+```
+-Dhttps.proxyHost=PROXY HOST
+-Dhttps.proxyPort=PROXY PORT
+```
+
+**Set the properties in EnginFrame**
+
+1. **Get the java properties that EnginFrame currently uses:**
+
+   1. Run `ps -aux` and locate the EnginFrame process that ends in `org.apache.catalina.startup.Bootstrap start`\.
+
+   1. Copy the line representing the command that launched EnginFrame and copy it to a local bash variable, such as `OPTIONS`:
+
+      ```
+      $ OPTIONS="content of copied line"
+      OPTIONS_UPDATED=`echo "$OPTIONS" | tr ' ' '\n' | egrep -e '^-D' | tr '\n' ' '`
+      ```
+
+      The new variable `OPTIONS_UPDATED` has the content you need to use when you edit the `EnginFrame.conf` file\.
+
+1. **Edit the `EnginFrame.conf` file by adding the variable name `SERVER_JAVA_OPTIONS` to the end of the file and saving it:**
+
+   ```
+   # other variables defined
+   ...
+   SERVER_JAVA_OPTIONS="<values copied from the content of OPTIONS_UPDATED> -Dhttp.proxyHost=$PROXY_HOST -Dhttp.proxyPort=$PROXY_PORT"
+   ```
+
+   `PROXY_HOST` and `PROXY_PORT` are placeholders for the proxy host and proxy port\.
+
+1. **Restart the EnginFrame process\.**

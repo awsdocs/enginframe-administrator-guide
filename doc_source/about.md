@@ -292,7 +292,7 @@ When submitting a job to a remote cluster hosted on AWS , HPC Connector relies o
 ### HPC Connector run requirements<a name="requirements-for-hpc-connector"></a>
 
 For HPC Connector to work properly, you must have an AWS account and create and configure the following items\.
-+ An Amazon S3 bucket that's used by HPC Connector for transferring the data from the spooler local to the node running the EnginFrame server to the remote clusters on AWS, or the other way around\.
++ An Amazon S3 bucket that's used by HPC Connector for transferring the data from the spooler local to the node running the EnginFrame server to the remote clusters on AWS, or the other way around\. HPC Connector doesn't support [Using Amazon S3 bucket keys](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-key.html)\.
 + An IAM role for accessing the Amazon S3 bucket\. This role is used by HPC Connector for transferring the data back and forth the remote destination\.
 + An IAM role for managing AWS ParallelCluster in your account\. This role is used by HPC Connector for creating, starting, and stopping clusters\.
 + An IAM role for running jobs remotely using AWS SSM\. This role is used for launching job scripts remotely on the clusters\.

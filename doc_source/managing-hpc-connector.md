@@ -68,7 +68,8 @@ EnginFrame assumes that this credential file is already present at installation 
 When launching a job on a cluster running on AWS, HPC Connector uses an Amazon S3 bucket to transfer input and output data to from the remote folder where the job is to run\. To use the Amazon S3 bucket, you must provide the Amazon resource name \(ARN\) of the S3 bucket when using the EnginFrame installer\.
 
 **Warning**  
-In general, the overall size of a file that's transferred for a single job doesn't need to exceed 100MB\. If the overall file size exceeds 100MB, the system might time out on the transfer operation, and the job or copy might fail\. If your jobs need to access larger datasets, make sure that these are available to the cluster through a shared file system\. For more information about how to mount shared storage, see [Shared storage](https://docs.aws.amazon.com/parallelcluster/latest/ug/SharedStorage-v3.html) in the AWS ParallelCluster User Guide\. 
+In general, the overall size of a file that's transferred for a single job doesn't need to exceed 100MB\. If the overall file size exceeds 100MB, the system might time out on the transfer operation, and the job or copy might fail\. If your jobs need to access larger datasets, make sure that these are available to the cluster through a shared file system\. For more information about how to mount shared storage, see [Shared storage](https://docs.aws.amazon.com/parallelcluster/latest/ug/SharedStorage-v3.html) in the AWS ParallelCluster User Guide\.
+HPC Connector doesn't support [Using Amazon S3 bucket keys](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-key.html)\.
 
 ## HPC Connector IAM roles<a name="hpc-connector-iam-roles"></a>
 
