@@ -57,7 +57,7 @@ EnginFrame ships with Hazelcast Open Source which doesn't support the [security 
 
    For more information, see the [Hazelcast documentation](https://docs.hazelcast.com/hazelcast/latest/security/tls-ssl)\.
 
-1. Follow the next example to properly configure a Keystore and a Truststore that leverages both `keytool` and `openssl`\.
+1. Follow the next example to properly configure a Keystore and a Truststore that leverages both `keytool` and `openssl` \.
 
    ```
    $ keytool cd /efs
@@ -69,5 +69,7 @@ EnginFrame ships with Hazelcast Open Source which doesn't support the [security 
    keytool -keystore KeyStore.jks -alias bmc -import -file cert-signed
    keytool -keystore truststore.jks -alias bmc -import -file ca-cert
    ```
+
+   With this example, you create a custom CA with `openssl` that's used to sign the Hazelcast certificate\. We recommend that you use a publicly available CA for production and reserve the use of custom CA certificates for testing purposes\.
 
 1. Restart EnginFrame to leverage SSL/TLS for Hazelcast members and clients communications\.
