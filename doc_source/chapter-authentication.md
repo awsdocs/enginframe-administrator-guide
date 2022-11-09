@@ -27,7 +27,7 @@ You can set the authentication authority at the `ef:service` level to override t
 
 ## User mapping<a name="section-user-mapping"></a>
 
-Users can log in to the EnginFrame portal with a username that's different from that of their user account in the underalying computing environment, when you configure EnginFrame *user mapping*\. User mapping works by mapping usernames provided at login time to usernames in the underlying operating system\.
+Users can log in to the EnginFrame portal with a username that's different from that of their user account in the underlying computing environment, when you configure EnginFrame *user mapping*\. User mapping works by mapping usernames provided at login time to usernames in the underlying operating system\.
 
 For example, the user *John Smith* can log into the EnginFrame Portal using by entering `John Smith` and submit a job that's run as the user `jsmith` on the underlying Unix computing environment\. 
 
@@ -46,7 +46,7 @@ To enable user mapping, complete the following steps:
 
 1. Set the ownership of the `ef.user.mapping` file to `root:root` and its permissions to `755` \(`rwxr-xr-x`\)\. 
 
-The `ef.user.mapping` script must output the mapped to username for the user that's being authenticated\.
+The `ef.user.mapping` script must output the mapped username for the user that's being authenticated\.
 
 In the following example, `ef.user.mapping` maps all the portal users to the unique `jsmith` user\.
 
@@ -103,6 +103,17 @@ if [ -n "${_mapping}" ] ; then
   echo "${_mapping}" | sed 'q'
 else
   exit 1
+fi
+```
+
+With user mapping, an administrator can log in as an emulated user that's experiencing issues in a running production environment for testing purposes\. This can be accomplished without compromising other accounts\. With the following simple example `ef.user.mapping` file, a user named `user1` takes on the identity of `user2` without impacting other user accounts\.
+
+```
+#!/bin/bash
+if [["$1"==user1]] ; then
+  echo "user2"
+else
+  echo "$1"
 fi
 ```
 
