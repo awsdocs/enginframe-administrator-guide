@@ -34,7 +34,7 @@ To start HPC Connector, the EnginFrame installer requires the following paramete
 + An AWS Region where the cluster is created and managed\.
 + An Amazon S3 bucket to transfer data between EnginFrame and the remote clusters\.
 + Three IAM roles that are used to access data on the S3 bucket, submit jobs using SSM, and manage clusters using AWS ParallelCluster\.
-+ An AWS instance profile or an AWS profile name containing AWS credentials for an IAM user \(`<ef-iam-user>`\) able to assume the roles\.
++ An AWS instance profile or an AWS profile name containing AWS credentials for an \(`<ef-iam-user>`\) able to assume the roles\.
 
 To simplify the setup of these resources, you can use a deployment script to create the required resources on your AWS account\. Select one of the following links to bootstrap AWS HPC Connector\.
 + [US East \(N\. Virginia\) Region](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/quickcreate?templateUrl=https%3A%2F%2Fnice-enginframe-download-us-east-1.s3.amazonaws.com%2Fenginframe%2Ftemplates%2FAWS-HPC-Connector.yaml&stackName=hpc-connector)
@@ -228,7 +228,7 @@ Access to the Amazon S3 bucket is required only by the head nodes of the remote 
 }
 ```
 
-EnginFrame IAM user  
+EnginFrame   
 An `<ef-iam-user>` must be configured with the following policy that allows it to assume the previously defined AWS ParallelCluster, Amazon S3, and SSM roles\.  
 
 ```

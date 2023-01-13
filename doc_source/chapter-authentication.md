@@ -27,7 +27,7 @@ You can set the authentication authority at the `ef:service` level to override t
 
 ## User mapping<a name="section-user-mapping"></a>
 
-Users can log in to the EnginFrame portal with a username that's different from that of their user account in the underlying computing environment, when you configure EnginFrame *user mapping*\. User mapping works by mapping usernames provided at login time to usernames in the underlying operating system\.
+Users can log in to the EnginFrame portal with a username that's different from that of their account in the underlying computing environment, when you configure EnginFrame *user mapping*\. User mapping works by mapping usernames provided at login time to usernames in the underlying operating system\.
 
 For example, the user *John Smith* can log into the EnginFrame Portal using by entering `John Smith` and submit a job that's run as the user `jsmith` on the underlying Unix computing environment\. 
 

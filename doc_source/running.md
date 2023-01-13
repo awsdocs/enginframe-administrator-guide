@@ -167,8 +167,6 @@ The Operational Dashboard offers a set of services that are divided into the fol
 + [Monitor](#monitor-services)
 + [Troubleshooting](#troubleshooting-services)
 + [EnginFrame statistics](#statistics)
-+ **Monitor**
-+ **Troubleshooting**
 
 These services are listed in the navigation pane of the dashboard\.
 
