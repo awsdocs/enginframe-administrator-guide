@@ -6,7 +6,7 @@ The NICE DCV Session Manager integration is only supported with NICE DCV 2020\.2
 
 Node monitoring, Linux console sessions, autorun files, and sessions screenshots are new features that were introduced in NICE DCV 2021\.0\. These features have been added in EnginFrame 2020\.1 and are only supported by NICE DCV 2021\.0 and later\.
 
-For more information, see [What is NICE DCV Session Manager](https://docs.aws.amazon.com/hdcv/latest/sm-admin/what-is-sm.html) in the *NICE DCV Session Manager Administrator Guide*\.
+For more information, see [What is NICE DCV Session Manager](https://docs.aws.amazon.com/dcv/latest/sm-admin/what-is-sm.html) in the *NICE DCV Session Manager Administrator Guide*\.
 
 ## How to set up NICE DCV Session Manager<a name="installation"></a>
 
